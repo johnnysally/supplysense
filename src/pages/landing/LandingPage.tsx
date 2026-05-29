@@ -21,7 +21,7 @@ export default function LandingPage() {
   const [legalModal, setLegalModal] = useState<string | null>(null)
 
   useEffect(() => {
-    api.get('/client/auth/public-settings').then(res => { if (res.data) setSettings(prev => ({ ...prev, ...res.data })) }).catch(() => {})
+    api.get('/client/auth/public-settings').then(res => { if (res.data) setSettings((prev: any) => ({ ...prev, ...res.data })) }).catch(() => {})
   }, [])
 
   const g = settings.general

@@ -9,7 +9,7 @@ import toast from 'react-hot-toast'
 
 export default function AIInsightsPage() {
   const organization = useAuthStore((state) => state.organization)
-  const currency = organization?.settings?.currency || 'KSh'
+  const currency = (organization as any)?.settings?.currency || 'KSh'
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState('')
   const [result, setResult] = useState<any>(null)

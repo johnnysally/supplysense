@@ -4,7 +4,7 @@ import { classNames } from '../../utils/helpers'
 interface StatsCardProps {
   title: string
   value: string | number
-  icon: LucideIcon
+  icon: any
   trend?: string
   trendUp?: boolean
   color?: 'blue' | 'green' | 'yellow' | 'red' | 'purple'

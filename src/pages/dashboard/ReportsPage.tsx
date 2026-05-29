@@ -10,7 +10,7 @@ import { FileText, TrendingUp, Package, AlertTriangle } from 'lucide-react'
 
 export default function ReportsPage() {
   const organization = useAuthStore((state) => state.organization)
-  const currency = organization?.settings?.currency || 'KSh'
+  const currency = (organization as any)?.settings?.currency || 'KSh'
   const [activeTab, setActiveTab] = useState('sales')
   const [loading, setLoading] = useState(true)
   const [salesData, setSalesData] = useState<any>(null)

@@ -12,7 +12,7 @@ export default function PricingPage() {
   const [settings, setSettings] = useState<any>({ systemName: 'SupplySense', pricing: { trial: { duration: 14 }, standard: { monthly: 0, yearly: 0, permanent: 0 }, proplus: { monthly: 0, yearly: 0, permanent: 0 } }, paymentConfig: { currency: 'KSh' } })
   const [billingModal, setBillingModal] = useState<{ plan: string } | null>(null)
 
-  useEffect(() => { api.get('/client/auth/public-settings').then(res => { if (res.data) setSettings(prev => ({ ...prev, ...res.data })) }).catch(() => {}) }, [])
+  useEffect(() => { api.get('/client/auth/public-settings').then(res => { if (res.data) setSettings((prev: any) => ({ ...prev, ...res.data })) }).catch(() => {}) }, [])
 
   const currency = settings.paymentConfig?.currency || 'KSh'
   const pricing = settings.pricing || {}
