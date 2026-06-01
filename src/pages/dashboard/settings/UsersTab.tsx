@@ -38,22 +38,23 @@ export default function UsersTab() {
   }
 
   const columns = [
-    { key: 'fullName', header: 'Name' },
-    { key: 'email', header: 'Email' },
-    { key: 'role', header: 'Role', render: (u: any) => <span className="capitalize">{u.role}</span> },
-    { key: 'department', header: 'Department', render: (u: any) => <span className="capitalize">{u.department}</span> },
+    { key: 'fullName', header: 'Name', render: (u: any) => <span className="text-gray-900 dark:text-gray-100">{u.fullName}</span> },
+    { key: 'email', header: 'Email', render: (u: any) => <span className="text-gray-600 dark:text-gray-400">{u.email}</span> },
+    { key: 'role', header: 'Role', render: (u: any) => <span className="capitalize text-gray-700 dark:text-gray-300">{u.role}</span> },
+    { key: 'department', header: 'Department', render: (u: any) => <span className="capitalize text-gray-700 dark:text-gray-300">{u.department}</span> },
     { key: 'actions', header: '', render: (u: any) => <Button variant="ghost" size="sm" onClick={() => handleDelete(u._id)}>Deactivate</Button> }
   ]
 
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-semibold">Users</h3>
+        <h3 className="font-semibold text-gray-900 dark:text-gray-100">Users</h3>
         <Button size="sm" onClick={() => setShowCreate(true)}><Plus size={14} className="mr-1" /> Add</Button>
       </div>
-      <div className="bg-white dark:bg-gray-800 rounded-xl border overflow-hidden">
+      <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
         <Table columns={columns} data={users} loading={loading} />
       </div>
+
       <Modal isOpen={showCreate} onClose={() => setShowCreate(false)} title="Add User">
         <div className="space-y-3">
           <Input label="Full Name" value={form.fullName} onChange={(e) => setForm({ ...form, fullName: e.target.value })} />
@@ -61,16 +62,16 @@ export default function UsersTab() {
           <Input label="Password" type="password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
           <Input label="Phone" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
           <div>
-            <label className="block text-sm font-medium mb-1">Role</label>
-            <select value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-sm dark:bg-gray-800">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Role</label>
+            <select value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })} className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
               <option value="admin">Admin</option>
               <option value="manager">Manager</option>
               <option value="user">User</option>
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Department</label>
-            <select value={form.department} onChange={(e) => setForm({ ...form, department: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-sm dark:bg-gray-800">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Department</label>
+            <select value={form.department} onChange={(e) => setForm({ ...form, department: e.target.value })} className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
               {DEPARTMENT_OPTIONS.map(d => <option key={d} value={d}>{d}</option>)}
             </select>
           </div>

@@ -5,6 +5,7 @@ import Footer from '../../components/landing/Footer'
 import Button from '../../components/common/Button'
 import Modal from '../../components/common/Modal'
 import CookieConsent from '../../components/landing/CookieConsent'
+import Chatbot from '../../components/landing/Chatbot'
 import { Package, Truck, BarChart3, Shield, Zap, Users } from 'lucide-react'
 import api from '../../services/api'
 
@@ -49,22 +50,12 @@ export default function LandingPage() {
         </section>
 
         <section id="features" className="py-20 px-4 bg-white dark:bg-gray-800">
-          <div className="max-w-6xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Everything you need</h2>
-            <p className="text-gray-500 dark:text-gray-400 mt-2">Powerful features to manage your entire supply chain</p>
-          </div>
+          <div className="max-w-6xl mx-auto text-center mb-12"><h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Everything you need</h2><p className="text-gray-500 dark:text-gray-400 mt-2">Powerful features to manage your entire supply chain</p></div>
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[{ icon: Package, title: 'Inventory Tracking', desc: 'Real-time stock levels and AI-powered stockout predictions.' },
-              { icon: Truck, title: 'Supplier Management', desc: 'Score suppliers, track performance, get recommendations.' },
-              { icon: BarChart3, title: 'AI Insights', desc: 'Demand forecasting, anomaly detection, smart recommendations.' },
-              { icon: Zap, title: 'Order Management', desc: 'Track orders from placement to delivery.' },
-              { icon: Shield, title: 'Smart Alerts', desc: 'Get notified via email, SMS, or WhatsApp.' },
-              { icon: Users, title: 'Team Management', desc: 'Add users, manage devices, control access.' }
-            ].map((f, i) => (
+            {[{ icon: Package, title: 'Inventory Tracking', desc: 'Real-time stock levels and AI-powered stockout predictions.' },{ icon: Truck, title: 'Supplier Management', desc: 'Score suppliers, track performance, get recommendations.' },{ icon: BarChart3, title: 'AI Insights', desc: 'Demand forecasting, anomaly detection, smart recommendations.' },{ icon: Zap, title: 'Order Management', desc: 'Track orders from placement to delivery.' },{ icon: Shield, title: 'Smart Alerts', desc: 'Get notified via email, SMS, or WhatsApp.' },{ icon: Users, title: 'Team Management', desc: 'Add users, manage devices, control access.' }].map((f, i) => (
               <div key={i} className="p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
                 <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mb-4"><f.icon size={24} className="text-primary-600" /></div>
-                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">{f.title}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">{f.desc}</p>
+                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">{f.title}</h3><p className="text-sm text-gray-500 dark:text-gray-400">{f.desc}</p>
               </div>
             ))}
           </div>
@@ -72,18 +63,12 @@ export default function LandingPage() {
 
         {g.aboutContent && (
           <section id="about" className="py-20 px-4 bg-gray-50 dark:bg-gray-900">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">About {settings.systemName}</h2>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-wrap">{g.aboutContent}</p>
-            </div>
+            <div className="max-w-4xl mx-auto text-center"><h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">About {settings.systemName}</h2><p className="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-wrap">{g.aboutContent}</p></div>
           </section>
         )}
 
         <section id="pricing" className="py-20 px-4 bg-white dark:bg-gray-800">
-          <div className="max-w-5xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Simple Pricing</h2>
-            <p className="text-gray-500 dark:text-gray-400 mt-2">Start free, upgrade when you're ready</p>
-          </div>
+          <div className="max-w-5xl mx-auto text-center mb-12"><h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Simple Pricing</h2><p className="text-gray-500 dark:text-gray-400 mt-2">Start free, upgrade when you're ready</p></div>
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             {plans.map((p, i) => (
               <div key={i} className={`p-8 rounded-xl border text-center relative flex flex-col ${p.popular ? 'border-primary-500 border-2' : 'border-gray-200 dark:border-gray-700'}`}>
@@ -91,27 +76,23 @@ export default function LandingPage() {
                 <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">{p.plan}</h3>
                 <p className="text-4xl font-bold text-primary-600 mt-4">{p.price}<span className="text-sm text-gray-500">{p.sub}</span></p>
                 {p.billingCards && (
-                  <div className="grid grid-cols-3 gap-1 mt-4">
-                    {p.billingCards.map((card, j) => (
-                      <div key={j} className="bg-green-50 dark:bg-green-900/20 rounded-lg px-2 py-2 text-center border border-green-200 dark:border-green-800">
-                        <p className="text-xs text-green-700 dark:text-green-400 font-medium">{card.label}</p>
-                        <p className="text-sm font-bold text-green-700 dark:text-green-400">{card.price}</p>
-                      </div>
-                    ))}
-                  </div>
+                  <div className="grid grid-cols-3 gap-1 mt-4">{p.billingCards.map((card: any, j: number) => (
+                    <div key={j} className="bg-green-50 dark:bg-green-900/20 rounded-lg px-2 py-2 text-center border border-green-200 dark:border-green-800"><p className="text-xs text-green-700 dark:text-green-400 font-medium">{card.label}</p><p className="text-sm font-bold text-green-700 dark:text-green-400">{card.price}</p></div>
+                  ))}</div>
                 )}
-                <ul className="text-sm text-gray-600 dark:text-gray-400 mt-6 space-y-2 text-left flex-1">{p.features.map((f, j) => <li key={j}>✓ {f}</li>)}</ul>
+                <ul className="text-sm text-gray-600 dark:text-gray-400 mt-6 space-y-2 text-left flex-1">{p.features.map((f: string, j: number) => <li key={j}>✓ {f}</li>)}</ul>
                 <Button className="w-full mt-8" onClick={() => navigate('/pricing')}>{p.label}</Button>
               </div>
             ))}
           </div>
         </section>
       </main>
-      <Footer settings={settings} onLegalClick={(type) => setLegalModal(type)} />
+      <Footer settings={settings} onLegalClick={(type: string) => setLegalModal(type)} />
       <Modal isOpen={!!legalModal} onClose={() => setLegalModal(null)} title={legalModal === 'terms' ? 'Terms & Conditions' : legalModal === 'privacy' ? 'Privacy Policy' : 'Cookies Policy'} size="lg">
-        <div className="prose prose-sm max-w-none dark:prose-invert" dangerouslySetInnerHTML={{ __html: settings.legal?.[legalModal || ''] || '<p>Not yet configured.</p>' }} />
+        <div className="max-h-96 overflow-y-auto prose prose-sm max-w-none dark:prose-invert" dangerouslySetInnerHTML={{ __html: settings.legal?.[legalModal || ''] || '<p>Not yet configured.</p>' }} />
       </Modal>
       <CookieConsent />
+      <Chatbot />
     </div>
   )
 }

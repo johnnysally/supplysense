@@ -22,6 +22,11 @@ interface Organization {
   licenseKey?: string
   enabledModules?: Record<string, boolean>
   mode?: string
+  settings?: {
+    currency?: string
+    dateFormat?: string
+    notificationChannels?: Record<string, boolean>
+  }
 }
 
 interface AuthState {
@@ -49,9 +54,7 @@ export const useAuthStore = create<AuthState>()(
     }),
     {
       name: 'supplysense-client-auth',
-      onRehydrateStorage: () => (state) => {
-        state?.setHydrated()
-      }
+      onRehydrateStorage: () => (state) => { state?.setHydrated() }
     }
   )
 )
